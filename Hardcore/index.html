@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog posts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      .container {
+        max-width: 105em;
+        margin: 0 auto;
+        padding: 0 2rem;
+        background-color: #fff;
+      }
+
+      .intro-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 3rem 0;
+        cursor: pointer;
+      }
+
+      .heading-primary {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: #383838;
+      }
+
+      .more-in-photography-link:link,
+      .more-in-photography-link:visited {
+        text-decoration: none;
+        color: #f03d1f;
+        font-size: 1.6rem;
+        cursor: pointer;
+      }
+
+      .more-in-photography-link:hover,
+      .more-in-photography-link:active {
+        color: #ec6a2a;
+        transition: all 0.3s;
+      }
+
+      .grid {
+        display: grid;
+        gap: 4rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .picture-in-segment {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+
+      }
+
+      .picture-in-segment img {
+        width: 32rem;
+        height: 32rem;
+
+        overflow: hidden;
+        border-radius: 2px;
+        transition: all 0.4s;
+      }
+
+      .picture-in-segment img:hover {
+        transform: scale(1.1);
+      }
+
+      .section {
+        position: relative;
+      }
+
+      .heart-and-likes {
+        height: 7rem;
+        width: 7rem;
+        border: 0.1px solid #fff;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 2rem 2rem rgb(0 0 0/ 5%);
+
+        position: absolute;
+        top: 37%;
+        left: -8%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .heart-and-likes ion-icon {
+        height: 1.4rem;
+        width: 1.4rem;
+      }
+
+      .position-numbers {
+        font-size: 1.2rem;
+      }
+
+      .sticky-position {
+        height: 3rem;
+        width: 11rem;
+        font-weight: 600;
+        background-color: #fff;
+        border: 2px solid #fff;
+
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        content:"";
+        top: 5%;
+        left: -5%;
+        box-shadow: 0 2rem 2rem rgb(0 0 0/ 15%);
+
+      }
+
+      .sticky-position ion-icon {
+        height: 1.6rem;
+        width: 1.6rem;
+      }
+
+      .sticky-position-text {
+        font-size: 1.2rem;
+      }
+
+      .main-section {
+        max-width: 100%;
+        margin-top: 4rem;
+      }
+
+      .margin-bottom {
+        margin-bottom: 1rem;
+      }
+
+      .margin-bottom-2 {
+        margin-bottom: 2rem;
+      }
+
+      .link-for-topic:link,
+      .link-for-topic:visited {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        color: #ec6a2a;
+        text-decoration: none;
+      }
+
+      .link-for-topic:hover,
+      .link-for-topic:active {
+        color: #f03d1f;
+        transition: all 0.3s;
+      }
+
+      .link-to-article:link,
+      .link-to-article:visited {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        text-decoration: none;
+        line-height: 1.4;
+        color: #343434;
+        cursor: pointer;
+      }
+
+      .link-to-article:hover,
+      .link-to-article:active {
+        color: #ec6a2a;
+        transition: all 0.3s;
+      }
+
+      .text-primary {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 1.9;
+        color: #787878;
+        margin-bottom: 2rem;
+      }
+
+      .name-date {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .text-secondary {
+       font-family: 'Poppins' sans-serif;
+       font-size: 1.2rem;
+       font-weight: 500;
+       letter-spacing: 0.1rem;
+       text-transform: uppercase;
+       color: #959595; 
+      }
+
+      .dash {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #f03d1f;
+      }
+
+      .social-media-section {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .social-icon-itself {
+        height: 2rem;
+        width: 2rem;
+        color: #000;
+      }
+
+      ion-icon:link,
+      ion-icon:visited {
+        text-decoration: none;
+        color: #000;
+      }
+
+      ion-icon:hover,
+      ion-icon:active {
+        text-decoration: none;
+        color: #ec6a2a;
+        transition: all 0.3s;
+      }
+
+      @media (max-width: 67em) {
+        .container {
+          margin: 0 5rem;
+        }
+
+        .grid {
+         grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 50em) {
+        .container {
+          width: 55rem;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .main-section {
+        margin-top: 2.5rem;
+      }
+
+        .name-date {
+          justify-content: center;
+          align-items: center;
+        }
+
+        .social-media-section {
+          justify-content: center;
+          align-items: center;
+        }
+
+        .heart-and-likes {
+          left: 12%;
+          top: 43%;
+        }
+
+        .sticky-position {
+          left: 12%;
+        }
+
+        .last-icon {
+          margin-bottom: 4rem;
+        }
+    }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="intro-links">
+        <h1 class="heading-primary">Recent Articles</h1>
+        <a class="more-in-photography-link" href="#" target="_blank"
+          >More in Photography &rarr;</a
+        >
+      </div>
+      <div class="grid">
+        <div class="section">
+          <picture class="picture-in-segment">
+            <img
+              src="images/img-1.jpg"
+              alt="Image with a mobile phone"
+              name="Image one"
+            />
+          </picture>
+          <div class="heart-and-likes">
+            <ion-icon name="heart-outline"></ion-icon>
+            <p class="position-numbers">293</p>
+          </div>
+          <div class="main-section">
+            <div class="margin-bottom">
+              <a class="link-for-topic" href="#" alt="Technology" target="_blank"
+              >Technology</a
+              >
+            </div>
+            <div class="margin-bottom-2">
+              <a class="link-to-article" href="#" alt="Article's name" target="_blank">
+                Check Out New Trendy Smart Phones in Next Decade
+                </a>
+            </div>
+            <p class="text-primary">
+              Far far away, behind the word mountains, far from the countries
+              Vokalia and Consonantia, there live the blind texts. Separated
+              they live in Bookmarksgrove...
+            </p>
+            <div class="name-date">
+              <p class="text-secondary">Jane Smith</p>
+              <p class="dash"> &mdash; </p>
+              <p class="text-secondary">November 8, 2018</p>
+            </div>
+          </div>
+
+          <div class="social-media-section">
+              <a class="social-icon-link" href="#" target="_blank"
+              ><ion-icon
+              class="social-icon-itself"
+              name="logo-facebook"
+              ></ion-icon
+              ></a>
+
+              <a class="social-icon-link" href="#" target="_blank"
+              ><ion-icon
+              class="social-icon-itself"
+              name="logo-google"
+              ></ion-icon
+              ></a>
+
+              <a class="social-icon-link" href="#" target="_blank"
+              ><ion-icon
+              class="social-icon-itself"
+              name="logo-pinterest"
+              ></ion-icon
+              ></a>
+
+              <a class="social-icon-link" href="#" target="_blank"
+              ><ion-icon
+              class="social-icon-itself"
+              name="logo-twitter"
+              ></ion-icon
+              ></a>
+
+              <a class="social-icon-link" href="#" target="_blank"
+              ><ion-icon
+              class="social-icon-itself"
+              name="logo-instagram"
+              ></ion-icon
+              ></a>
+        </div>
+      </div>
+
+      <div class="section">
+        <picture class="picture-in-segment">
+          <img
+            src="images/img-2.jpg"
+            alt="Wona with a VR Headset"
+            name="Image two"
+          />
+        </picture>
+        <div class="sticky-position">
+          <ion-icon name="flash-outline"></ion-icon>
+          <p class="sticky-position-text">Sticky post</p>
+        </div>
+        <div class="heart-and-likes">
+          <ion-icon name="heart-outline"></ion-icon>
+          <p class="position-numbers">239</p>
+        </div>
+        <div class="main-section">
+          <div class="margin-bottom">
+            <a class="link-for-topic" href="#" alt="Trending" target="_blank"
+            >Trending</a
+            >
+          </div>
+          <div class="margin-bottom-2">
+            <a class="link-to-article" href="#" alt="Article's name" target="_blank">
+              Check Out The Most Awesome VR Headset in 2020
+            </a>
+          </div>
+          <p class="text-primary">
+            I neglect my talents Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated...
+
+          </p>
+          <div class="name-date">
+            <p class="text-secondary">Janet Jones</p>
+            <p class="dash"> &mdash; </p>
+            <p class="text-secondary">November 7, 2018</p>
+          </div>
+        </div>
+
+        <div class="social-media-section">
+
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-facebook"
+            ></ion-icon
+            ></a>
+
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-google"
+            ></ion-icon
+            ></a>
+          
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-pinterest"
+            ></ion-icon
+            ></a>
+          
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-twitter"
+            ></ion-icon
+            ></a>
+        
+
+          
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-instagram"
+            ></ion-icon
+            ></a>
+          
+      </div>
+    </div>
+
+    <div class="section">
+      <picture class="picture-in-segment">
+        <img
+          src="images/img-3.jpg"
+          alt="Mobile phone"
+          name="Image three"
+        />
+      </picture>
+      <div class="heart-and-likes">
+        <ion-icon name="heart-outline"></ion-icon>
+        <p class="position-numbers">134</p>
+      </div>
+      <div class="main-section">
+        <div class="margin-bottom">
+          <a class="link-for-topic" href="#" alt="Trending" target="_blank"
+          >Trending</a
+          >
+        </div>
+        <div class="margin-bottom-2">
+          <a class="link-to-article" href="#" alt="Article's name" target="_blank">
+            Or It's Now The End of Smartphones?
+            </a>
+        </div>
+        <p class="text-primary">
+          I neglect my talents Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated...
+
+        </p>
+        <div class="name-date">
+          <p class="text-secondary">Kally Gordon</p>
+          <p class="dash"> &mdash; </p>
+          <p class="text-secondary">November 7, 2018</p>
+        </div>
+      </div>
+
+      <div class="social-media-section">
+        
+          <a class="social-icon-link" href="#" target="_blank"
+          ><ion-icon
+          class="social-icon-itself"
+          name="logo-facebook"
+          ></ion-icon
+          ></a>
+        
+      
+        
+          <a class="social-icon-link" href="#" target="_blank"
+          ><ion-icon
+          class="social-icon-itself"
+          name="logo-google"
+          ></ion-icon
+          ></a>
+        
+          
+        
+          <a class="social-icon-link" href="#" target="_blank"
+          ><ion-icon
+          class="social-icon-itself"
+          name="logo-pinterest"
+          ></ion-icon
+          ></a>
+        
+
+        
+          <a class="social-icon-link" href="#" target="_blank"
+          ><ion-icon
+          class="social-icon-itself"
+          name="logo-twitter"
+          ></ion-icon
+          ></a>
+            <a class="social-icon-link" href="#" target="_blank"
+            ><ion-icon
+            class="social-icon-itself"
+            name="logo-instagram"
+            ></ion-icon
+            ></a>
+            <div class="last-icon"></div>
+    </div>
+  </div>
+
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
